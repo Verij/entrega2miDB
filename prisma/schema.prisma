@@ -1,0 +1,21 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Clubes {
+  id            String   @id @default(uuid())
+  nombre        String   @db.VarChar(255)
+  gasto         Int
+  createdAt     DateTime @default(now())
+  cant_miembros Int      @default(0)
+  activo        Boolean  @default(true)
+}
